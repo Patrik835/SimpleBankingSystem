@@ -20,9 +20,10 @@ public class Manager implements MenuSelectionObserver {
             setState(new MainMenuState(this, name));
             return;
         }
+        // before create account
         switch (selection) {
             case 1:
-                setState(new AccountInformationState(this));
+                setState(new AccountInformationState(this)); // get owner
                 break;
             case 2:
                 setState(new DepositState(this));
@@ -31,10 +32,10 @@ public class Manager implements MenuSelectionObserver {
                 setState(new WithdrawState(this));
                 break;
             case 4:
-                setState(new TransferState(this));
+                setState(new TransferState(this)); // change currency
                 break;
             case 5:
-                setState(new CheckBalanceState(this));
+                setState(new CheckBalanceState(this)); // get balance
                 break;
             default:
                 handleUserChoice(selection);
