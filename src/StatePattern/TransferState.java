@@ -1,7 +1,11 @@
-public class WithdrawState implements MenuState{
+package StatePattern;
+
+import ManagerObserver.Manager;
+
+public class TransferState implements MenuState{
     private Manager manager;
 
-    public WithdrawState(Manager manager) {
+    public TransferState(Manager manager) {
         this.manager = manager;
     }
 
@@ -11,6 +15,6 @@ public class WithdrawState implements MenuState{
     }
     @Override
     public String getMenu() {
-        return "withdraw menu";
+        return "transfer menu";
     }
 }

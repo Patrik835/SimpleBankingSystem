@@ -1,3 +1,8 @@
+package ManagerObserver;
+
+import StatePattern.*;
+
+
 public class Manager implements MenuSelectionObserver {
     private MenuState state;
     public String welcomeMessage;
@@ -46,10 +51,12 @@ public class Manager implements MenuSelectionObserver {
     private void handleUserChoice(int choice) {
         System.out.println("You selected " + choice);
     }
+
     public void setState(MenuState state) {
         this.state = state;
         this.state.handleRequest();
     }
+
     public void setWelcomeMessage(String message) {
         this.welcomeMessage = message;
     }

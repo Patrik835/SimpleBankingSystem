@@ -1,3 +1,7 @@
+package StatePattern;
+
+import ManagerObserver.Manager;
+
 public class DepositState implements MenuState {
 
     private Manager manager;
