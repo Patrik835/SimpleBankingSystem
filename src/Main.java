@@ -3,20 +3,23 @@ public class Main {
 
         Writer writer = new Writer() ;
         Reader reader = new Reader() ;
-        Manager Manager = new Manager() ;
-
+        Manager manager = new Manager() ;
 
         writer.write("Write name of the client:");
-        // read and set the name of the client
         String name = reader.readLine();
-        Manager.setClientName(name);
-        // write message hello name of the client and ask for the step he wants to do until he wants to exit
+        manager.setState(new MainMenuState(manager, name)); 
         int selection;
-        do {writer.write(Manager.welcomeMessage);
-            writer.write(Manager.Menu);
-            selection = Integer.parseInt(reader.readLine());
-            Manager.onMenuSelection(selection); 
-        } while (selection != 6);
+
+        while (true) {
+          writer.write(manager.welcomeMessage);
+          writer.write(manager.getMenu());
+          selection = Integer.parseInt(reader.readLine());
+          if (selection == 6) {
+              break;
+          }
+          manager.onMenuSelection(selection);
+        }
+        //TODO: Set state to NotInMenuState manager.setState(new AccountInformationState(manager)); 
+        writer.write(manager.welcomeMessage);
       }   
     }
-    // TODO: input fields
