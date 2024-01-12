@@ -3,10 +3,11 @@ public class Main {
 
         Writer writer = new Writer() ;
         Reader reader = new Reader() ;
-        Manager manager = new Manager() ;
 
         writer.write("Write name of the client:");
         String name = reader.readLine();
+        Manager manager = new Manager(name) ;
+
         manager.setState(new MainMenuState(manager, name)); 
         int selection;
 

@@ -11,6 +11,6 @@ public class AccountInformationState implements MenuState {
     }
     @Override
     public String getMenu() {
-        return "account information menu";
+        return "account information menu \n0. Go back to main menu";
     }
 }

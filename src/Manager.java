@@ -2,8 +2,10 @@ public class Manager implements MenuSelectionObserver {
     private MenuState state;
     public String welcomeMessage;
     public String Menu;
+    public String name;
 
-    public Manager() {
+    public Manager(String name) {
+        this.name = name;
         this.state = new AccountInformationState(this);
         this.Menu = "1. Create account\n2. Deposit\n3. Withdraw\n4. Transfer\n5. Check balance\n6. Exit";
     }
@@ -14,6 +16,10 @@ public class Manager implements MenuSelectionObserver {
 
     @Override
     public void onMenuSelection(int selection) {
+        if (selection == 0) {
+            setState(new MainMenuState(this, name));
+            return;
+        }
         switch (selection) {
             case 1:
                 setState(new AccountInformationState(this));
