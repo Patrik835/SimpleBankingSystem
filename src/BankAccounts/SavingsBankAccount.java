@@ -2,11 +2,13 @@ package BankAccounts;
 
 public class SavingsBankAccount implements BankAccount{
     private final String ownerName;
+    private final String accountType;
     private double balance;
     private final double interestRate;
 
-    public SavingsBankAccount(String ownerName, double interestRate) {
+    public SavingsBankAccount(String accountType, String ownerName, double interestRate) {
         this.ownerName = ownerName;
+        this.accountType = accountType;
         this.balance = 0.0;  // Initial balance
         this.interestRate = interestRate;
     }
@@ -43,5 +45,10 @@ public class SavingsBankAccount implements BankAccount{
     @Override
     public String getOwnerName() {
         return ownerName;
+    }
+
+    @Override
+    public String getAccountType() {
+        return accountType;
     }
 }
