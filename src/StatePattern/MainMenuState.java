@@ -1,19 +1,22 @@
 package StatePattern;
 
 import ManagerObserver.Manager;
+import BankAccounts.BankAccount;
 
 public class MainMenuState implements MenuState {
 
     private Manager manager;
     private String name;
+    private BankAccount account;
 
-    public MainMenuState(Manager manager, String name) {
+    public MainMenuState(Manager manager, String name, BankAccount account) {
         this.manager = manager;
         this.name = name;
+        this.account = account;
     }
     @Override
     public void handleRequest() {
-        manager.setWelcomeMessage("Hello " + name + ", you are in the menu. What do you want to do?");
+        manager.setWelcomeMessage("Hello " + name + ", you are in the menu of your"+ account.getOwnerName() +" . What do you want to do?");
     }
     @Override
     public String getMenu() {

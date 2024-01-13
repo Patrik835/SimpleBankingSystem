@@ -1,20 +1,20 @@
-import Utils.Reader;
-import Utils.Writer;
+import Utils.*;
 import StatePattern.MainMenuState;
+import BankAccounts.BankAccount;
 import ManagerObserver.Manager;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        Writer writer = new Writer() ;
-        Reader reader = new Reader() ;
-
+        Reader reader = new Reader();
+        Writer writer = new Writer();
         writer.write("Write name of the client:");
         String name = reader.readLine();
-        Manager manager = new Manager(name) ;
+        Manager manager = new Manager(name);
+        BankAccount account = manager.startMenu(reader, writer);
 
-        manager.setState(new MainMenuState(manager, name)); 
+        manager.setState(new MainMenuState(manager, name, account)); 
         int selection;
 
         while (true) {

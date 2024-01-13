@@ -1,6 +1,11 @@
 package ManagerObserver;
 
 import StatePattern.*;
+import BankAccounts.BankAccount;
+import BankAccounts.BasicBankAccount;
+import BankAccounts.SavingsBankAccount;
+import Singleton.BankingSystemSingleton;
+import Utils.*;
 
 
 public class Manager implements MenuSelectionObserver {
@@ -8,10 +13,13 @@ public class Manager implements MenuSelectionObserver {
     public String welcomeMessage;
     public String Menu;
     public String name;
+    public BasicBankAccount basicAccount;
+    public SavingsBankAccount savingsAccount;
+    public BankAccount account;
 
     public Manager(String name) {
         this.name = name;
-        this.state = new AccountInformationState(this);
+        // this.state = new AccountInformationState(this);
         this.Menu = "1. Create account\n2. Deposit\n3. Withdraw\n4. Transfer\n5. Check balance\n6. Exit";
     }
     
@@ -22,7 +30,7 @@ public class Manager implements MenuSelectionObserver {
     @Override
     public void onMenuSelection(int selection) {
         if (selection == 0) {
-            setState(new MainMenuState(this, name));
+            setState(new MainMenuState(this, name, account));
             return;
         }
         // before create account
@@ -40,7 +48,7 @@ public class Manager implements MenuSelectionObserver {
                 setState(new TransferState(this)); // change currency
                 break;
             case 5:
-                setState(new CheckBalanceState(this)); // get balance
+                setState(new CheckBalanceState(this, account)); // get balance
                 break;
             default:
                 handleUserChoice(selection);
@@ -56,8 +64,28 @@ public class Manager implements MenuSelectionObserver {
         this.state = state;
         this.state.handleRequest();
     }
-
+    
     public void setWelcomeMessage(String message) {
         this.welcomeMessage = message;
     }
+    public BankAccount startMenu(Reader reader, Writer writer) {
+        writer.write("What kind of account do you want to create? (1) Basic Bank Account (2) Savings Account");
+        String accountType = reader.readLine();
+        BankingSystemSingleton bankingSystem = BankingSystemSingleton.getInstance();
+        String accountTypeName = "";
+        if (accountType.equals("1")) {
+            accountTypeName = "basic";
+        }
+        else if (accountType.equals("2")) {
+            accountTypeName = "savings";
+        }
+        else {
+            System.out.println("Invalid key pressed, please try again.");
+            startMenu(reader, writer);
+            return null;
+        }
+        this.account = bankingSystem.createAccount(accountTypeName, name);
+        return this.account;
+    }
 }
+

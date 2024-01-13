@@ -1,3 +1,4 @@
+package Singleton;
 import BankAccounts.BankAccount;
 import FactoryPattern.BankAccountFactory;
 import FactoryPattern.BasicBankAccountFactory;
@@ -25,11 +26,11 @@ public class BankingSystemSingleton {
     public BankAccount createAccount(String accountType, String ownerName) {
         BankAccountFactory bankAccountFactory = null;
 
-        if (accountType.equalsIgnoreCase("savings")) {
+        if (accountType.equals("savings")) {
             bankAccountFactory = new SavingsBankAccountFactory(0.2);
         }
 
-        if (accountType.equalsIgnoreCase("basic")) {
+        if (accountType.equals("basic")) {
             bankAccountFactory = new BasicBankAccountFactory();
         }
 
