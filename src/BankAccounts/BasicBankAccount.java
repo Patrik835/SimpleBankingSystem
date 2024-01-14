@@ -2,11 +2,13 @@ package BankAccounts;
 
 public class BasicBankAccount implements BankAccount {
     private final String ownerName;
+    private final String accountType;
     private double balance;
     private final String typeOfAccount; 
 
-    public BasicBankAccount(String ownerName) {
+    public BasicBankAccount(String accountType, String ownerName) {
         this.ownerName = ownerName;
+        this.accountType = accountType;
         this.balance = 0.0;  // Initial balance
         this.typeOfAccount = "basic";
     }

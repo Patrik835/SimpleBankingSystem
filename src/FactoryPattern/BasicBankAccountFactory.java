@@ -1,5 +1,6 @@
 package FactoryPattern;
 
+import BankAccounts.BankAccount;
 import BankAccounts.BasicBankAccount;
 
 public class BasicBankAccountFactory implements BankAccountFactory {
@@ -8,7 +9,7 @@ public class BasicBankAccountFactory implements BankAccountFactory {
     }
 
     @Override
-    public BasicBankAccount createAccount(String accountType, String ownerName) {
-        return new BasicBankAccount(ownerName);
+    public BankAccount createAccount(String accountType, String ownerName) {
+        return new BasicBankAccount(accountType, ownerName);
     }
 }
