@@ -2,6 +2,8 @@ package StatePattern;
 
 import ManagerObserver.Manager;
 import Utils.*;
+import Singleton.BankingSystemSingleton;
+
 
 public class WithdrawState implements MenuState{
     private Manager manager;
@@ -18,6 +20,7 @@ public class WithdrawState implements MenuState{
     }
     @Override
     public String doLogic() {
+        BankingSystemSingleton bankingSystem = BankingSystemSingleton.getInstance();
         double amount = 0;
         while (true) {
             writer.write("How much do you want to withdraw?");
@@ -29,8 +32,8 @@ public class WithdrawState implements MenuState{
                 writer.write("Invalid input. Please enter a valid number.");
             }
         }
-        if (manager.account.withdraw(amount)){
-            return "Withdraw of " + amount + " was successful.\nNew balance: " + manager.account.getBalance();
+        if (bankingSystem.withdraw(amount)){
+            return "Withdraw of " + amount + " was successful.\nNew balance: " + bankingSystem.checkBalance();
         }
         else {
             return "Withdraw was unsuccessful.";

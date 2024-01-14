@@ -8,7 +8,7 @@ public class BasicBankAccount implements BankAccount {
     public BasicBankAccount(String accountType, String ownerName) {
         this.ownerName = ownerName;
         this.balance = 0.0;  // Initial balance
-        this.typeOfAccount = "basic";
+        this.typeOfAccount = accountType;
     }
 
     @Override

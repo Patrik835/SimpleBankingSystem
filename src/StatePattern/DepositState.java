@@ -2,6 +2,7 @@ package StatePattern;
 
 import ManagerObserver.Manager;
 import Utils.*;
+import Singleton.BankingSystemSingleton;
 
 public class DepositState implements MenuState {
 
@@ -19,6 +20,7 @@ public class DepositState implements MenuState {
     }
     @Override
     public String doLogic() {
+        BankingSystemSingleton bankingSystem = BankingSystemSingleton.getInstance();
         double amount = 0;
         while (true) {
             writer.write("How much do you want to deposit?");
@@ -30,8 +32,8 @@ public class DepositState implements MenuState {
                 writer.write("Invalid input. Please enter a valid number.");
             }
         }
-        if (manager.account.deposit(amount)){
-            return "Deposit of " + amount + " was successful.\nNew balance: " + manager.account.getBalance();
+        if (bankingSystem.deposit(amount)){
+            return "Deposit of " + amount + " was successful.\nNew balance: " + bankingSystem.checkBalance();
         }
         else {
             return "Deposit was unsuccessful. Please enter positive amount only.";

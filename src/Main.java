@@ -9,7 +9,8 @@ public class Main {
 
         Reader reader = new Reader();
         Writer writer = new Writer();
-
+        
+        System.out.println("Welcome to the Banking System!");
         writer.write("Write name of the client:");
         String name = reader.readLine();
         Manager manager = new Manager(name);
