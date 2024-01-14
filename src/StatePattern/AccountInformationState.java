@@ -18,7 +18,7 @@ public class AccountInformationState implements MenuState {
     }
     @Override
     public String doLogic() {
-        return ("Owner of the account: " + account.getOwnerName() + "\n" + "Account type: " + account.getAccountType() + "\n" + "Currency: " + "account.getCurrency()" + "\n");
+        return ("Owner of the account: " + account.getOwnerName() + "\n" + "Account type: " + account.getAccountType());
     }
 
     @Override

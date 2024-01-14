@@ -1,15 +1,14 @@
 package StatePattern;
 
 import ManagerObserver.Manager;
-import BankAccounts.BankAccount;
+import Singleton.BankingSystemSingleton;
 
 public class CheckBalanceState implements MenuState{
     private Manager manager;
-    private BankAccount account;
+    private BankingSystemSingleton account = BankingSystemSingleton.getInstance();
 
-    public CheckBalanceState(Manager manager, BankAccount account) {
+    public CheckBalanceState(Manager manager) {
         this.manager = manager;
-        this.account = account;
     }
 
     @Override
@@ -18,7 +17,7 @@ public class CheckBalanceState implements MenuState{
     }
     @Override
     public String doLogic() {
-        return "Your current balance: " + account.getBalance();
+        return "Your current balance: " + account.checkBalance();
     }
     @Override
     public String getMenu() {

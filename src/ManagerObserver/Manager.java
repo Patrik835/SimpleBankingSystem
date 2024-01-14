@@ -32,10 +32,10 @@ public class Manager implements MenuSelectionObserver {
             setState(new MainMenuState(this, name, account));
             return;
         }
-        // before create account
+        // creates new account
         switch (selection) {
             case 1:
-                setState(new AccountInformationState(this)); //done, (add interst rate and functionality of currency)
+                setState(new AccountInformationState(this)); //done, (add interst rate)
                 break;
             case 2:
                 setState(new DepositState(this)); // done, (add currency, add fees)
@@ -47,7 +47,7 @@ public class Manager implements MenuSelectionObserver {
                 setState(new ChangeCurrencyState(this)); // change currency
                 break;
             case 5:
-                setState(new CheckBalanceState(this, account)); // done
+                setState(new CheckBalanceState(this)); // done
                 break;
         }
     }

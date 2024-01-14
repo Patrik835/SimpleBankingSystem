@@ -6,11 +6,11 @@ public class SavingsBankAccount implements BankAccount{
     private final double interestRate;
     private final String typeOfAccount;
 
-    public SavingsBankAccount(String ownerName, double interestRate) { //
+    public SavingsBankAccount(String ownerName, double interestRate, String typeOfAccount) { //
         this.ownerName = ownerName;
         this.balance = 0.0;  // Initial balance
         this.interestRate = interestRate;
-        this.typeOfAccount = "savings";
+        this.typeOfAccount = typeOfAccount;
     }
 
     public double getInterestRate() {
