@@ -2,7 +2,7 @@ package DecoratorPattern;
 
 import BankAccounts.BankAccount;
 
-public class FeeDecorator implements BankAccountDecorator{
+public class FeeDecorator implements BankAccountDecorator {
     private final BankAccount decoratedAccount;
     private final double fee;
 
@@ -30,12 +30,13 @@ public class FeeDecorator implements BankAccountDecorator{
     }
 
     @Override
+    public String getAccountType() {
+        return decoratedAccount.getAccountType();
+    }
+
+    @Override
     public double getBalance() {
         return decoratedAccount.getBalance();
     }
 
-    @Override
-    public String getAccountType() {
-        return decoratedAccount.getAccountType();
-    }
 }

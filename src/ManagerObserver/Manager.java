@@ -4,7 +4,7 @@ import StatePattern.*;
 import BankAccounts.BankAccount;
 import BankAccounts.BasicBankAccount;
 import BankAccounts.SavingsBankAccount;
-import Singleton.BankingSystemSingleton;
+import SingletonPattern.BankingSystemSingleton;
 import Utils.*;
 
 

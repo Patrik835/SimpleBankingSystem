@@ -1,7 +1,7 @@
 package StatePattern;
 
 import ManagerObserver.Manager;
-import Singleton.BankingSystemSingleton;
+import SingletonPattern.BankingSystemSingleton;
 
 public class CheckBalanceState implements MenuState{
     private Manager manager;

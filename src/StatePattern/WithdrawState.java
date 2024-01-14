@@ -2,7 +2,7 @@ package StatePattern;
 
 import ManagerObserver.Manager;
 import Utils.*;
-import Singleton.BankingSystemSingleton;
+import SingletonPattern.BankingSystemSingleton;
 
 
 public class WithdrawState implements MenuState{

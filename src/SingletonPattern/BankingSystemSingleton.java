@@ -1,4 +1,4 @@
-package Singleton;
+package SingletonPattern;
 
 import BankAccounts.BankAccount;
 import DecoratorPattern.BankAccountDecorator;
@@ -29,7 +29,6 @@ public class BankingSystemSingleton {
         return instance;
     }
 
-    // TODO: either use return value to send to other methods as parameter or return void
     public BankAccount createAccount(String accountType, String ownerName) {
         if (accountType.equalsIgnoreCase("savings")) {
             bankAccountFactory = new SavingsBankAccountFactory(0.2);
