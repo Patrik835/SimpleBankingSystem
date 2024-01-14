@@ -12,6 +12,5 @@ public class SavingsBankAccountFactory implements BankAccountFactory {
 
     @Override
     public BankAccount createAccount(String accountType, String ownerName) {
-        return new SavingsBankAccount(accountType, ownerName, defaultInterestRate);
-    }
+        return new SavingsBankAccount(ownerName, defaultInterestRate);    }
 }
