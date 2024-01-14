@@ -12,14 +12,16 @@ public class FeeDecorator implements BankAccountDecorator{
     }
 
     @Override
-    public void deposit(double amount) {
+    public boolean deposit(double amount) {
         decoratedAccount.deposit(amount);
+        return true;
     }
 
     @Override
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         decoratedAccount.withdraw(amount + fee);
         System.out.println("Transaction fee applied: -$" + fee);
+        return true;
     }
 
     @Override
@@ -30,5 +32,10 @@ public class FeeDecorator implements BankAccountDecorator{
     @Override
     public double getBalance() {
         return decoratedAccount.getBalance();
+    }
+
+    @Override
+    public String getAccountType() {
+        return decoratedAccount.getAccountType();
     }
 }

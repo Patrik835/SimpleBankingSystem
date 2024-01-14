@@ -9,16 +9,18 @@ public class Main {
 
         Reader reader = new Reader();
         Writer writer = new Writer();
+
         writer.write("Write name of the client:");
         String name = reader.readLine();
         Manager manager = new Manager(name);
+        
         BankAccount account = manager.startMenu(reader, writer);
-
         manager.setState(new MainMenuState(manager, name, account)); 
         int selection;
 
         while (true) {
           writer.write(manager.welcomeMessage);
+          writer.write(manager.doLogic());
           writer.write(manager.getMenu());
           selection = Integer.parseInt(reader.readLine());
           if (selection == 6) {
@@ -27,6 +29,6 @@ public class Main {
           manager.onMenuSelection(selection);
         }
         //TODO: Set state to NotInMenuState manager.setState(new AccountInformationState(manager)); 
-        writer.write(manager.welcomeMessage);
-      }   
-    }
+        System.out.println("Goodbye!");   
+   }   
+}

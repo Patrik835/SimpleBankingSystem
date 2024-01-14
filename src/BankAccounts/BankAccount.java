@@ -3,6 +3,7 @@ package BankAccounts;
 public interface BankAccount {
     String getOwnerName();
     double getBalance();
-    void deposit(double amount);
-    void withdraw(double amount);
+    boolean deposit(double amount);
+    boolean withdraw(double amount);
+    String getAccountType();
 }

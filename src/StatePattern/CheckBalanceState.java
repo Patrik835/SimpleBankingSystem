@@ -14,11 +14,14 @@ public class CheckBalanceState implements MenuState{
 
     @Override
     public void handleRequest() {
-        double balance = account.getBalance();
-        manager.setWelcomeMessage("You have selected to see your balance\n Your current balance:" + balance  );
+        manager.setWelcomeMessage("\nYou have selected to see your balance. See your balance below:");
+    }
+    @Override
+    public String doLogic() {
+        return "Your current balance: " + account.getBalance();
     }
     @Override
     public String getMenu() {
-        return "check balance menu";
+        return "\n0. Go back to main menu";
     }
 }

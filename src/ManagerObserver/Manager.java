@@ -11,7 +11,6 @@ import Utils.*;
 public class Manager implements MenuSelectionObserver {
     private MenuState state;
     public String welcomeMessage;
-    public String Menu;
     public String name;
     public BasicBankAccount basicAccount;
     public SavingsBankAccount savingsAccount;
@@ -19,14 +18,14 @@ public class Manager implements MenuSelectionObserver {
 
     public Manager(String name) {
         this.name = name;
-        // this.state = new AccountInformationState(this);
-        this.Menu = "1. Create account\n2. Deposit\n3. Withdraw\n4. Transfer\n5. Check balance\n6. Exit";
     }
-    
     public String getMenu() {
         return state.getMenu();
-    }    
-
+    }
+    public String doLogic() {
+        return state.doLogic();
+    }   
+// observer pattern method, waiting for user input
     @Override
     public void onMenuSelection(int selection) {
         if (selection == 0) {
@@ -36,28 +35,21 @@ public class Manager implements MenuSelectionObserver {
         // before create account
         switch (selection) {
             case 1:
-                setState(new AccountInformationState(this)); // get owner
+                setState(new AccountInformationState(this)); //done, (add interst rate and functionality of currency)
                 break;
             case 2:
-                setState(new DepositState(this));
+                setState(new DepositState(this)); // done, (add currency, add fees)
                 break;
             case 3:
                 setState(new WithdrawState(this));
                 break;
             case 4:
-                setState(new TransferState(this)); // change currency
+                setState(new ChangeCurrencyState(this)); // change currency
                 break;
             case 5:
-                setState(new CheckBalanceState(this, account)); // get balance
-                break;
-            default:
-                handleUserChoice(selection);
+                setState(new CheckBalanceState(this, account)); // done
                 break;
         }
-    }
-
-    private void handleUserChoice(int choice) {
-        System.out.println("You selected " + choice);
     }
 
     public void setState(MenuState state) {
