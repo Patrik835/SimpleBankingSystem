@@ -32,16 +32,15 @@ public class Manager implements MenuSelectionObserver {
             setState(new MainMenuState(this, name, account));
             return;
         }
-        // creates new account
         switch (selection) {
             case 1:
-                setState(new AccountInformationState(this)); //done, (add interst rate)
+                setState(new AccountInformationState(this)); //done
                 break;
             case 2:
-                setState(new DepositState(this)); // done, (add currency, add fees)
+                setState(new DepositState(this)); // done
                 break;
             case 3:
-                setState(new WithdrawState(this));
+                setState(new WithdrawState(this)); //done
                 break;
             case 4:
                 setState(new ChangeCurrencyState(this)); // change currency

@@ -47,5 +47,9 @@ public class BasicBankAccount implements BankAccount {
     public String getAccountType() {
         return typeOfAccount;
     };
+    @Override
+    public double getInterestRate() {
+        return 0;
+    };
 }
 

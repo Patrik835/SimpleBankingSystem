@@ -6,4 +6,5 @@ public interface BankAccount {
     boolean deposit(double amount);
     boolean withdraw(double amount);
     String getAccountType();
+    double getInterestRate();
 }
