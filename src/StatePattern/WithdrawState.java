@@ -36,6 +36,7 @@ public class WithdrawState implements MenuState{
             return "Withdraw of " + amount + " was successful.\nNew balance: " + bankingSystem.checkBalance();
         }
         else {
+            manager.setState(new MainMenuState(manager, manager.name, manager.account));
             return "Withdraw was unsuccessful.";
         }
     }

@@ -30,13 +30,16 @@ public class FeeDecorator implements BankAccountDecorator {
     }
 
     @Override
-    public String getAccountType() {
-        return decoratedAccount.getAccountType();
-    }
-
-    @Override
     public double getBalance() {
         return decoratedAccount.getBalance();
     }
 
+    @Override
+    public String getAccountType() {
+        return decoratedAccount.getAccountType();
+    }
+    @Override
+    public double getInterestRate() {
+        return decoratedAccount.getInterestRate();
+    }
 }

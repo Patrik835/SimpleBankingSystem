@@ -143,11 +143,60 @@ It was agreed that the workload was divided evenly and fair.
 
 #### Observer pattern
 
-TODO: this
+- The Observer pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+- This pattern can be found in the `Manager` class and its associated `MenuSelectionObserver.java` interface.
+- The usage of the pattern:
+  - In this program, the Observer pattern is used to notify the Manager when a menu selection has been made.
+  - The Manager class implements the MenuSelectionObserver interface, and provides an implementation for the onMenuSelection method. This method is called when a menu selection is made (is subscribed to menu selection).
+  ```java
+  @Override
+    public void onMenuSelection(int selection) {
+        if (selection == 0) {
+            setState(new MainMenuState(this, name, account));
+            return;
+        }
+        switch (selection) {
+            case 1:
+                setState(new AccountInformationState(this));
+                break;
+            case 2:
+                setState(new DepositState(this));
+                break;
+            case 3:
+                setState(new WithdrawState(this));
+                break;
+            case 4:
+                setState(new ChangeCurrencyState(this));
+                break;
+            case 5:
+                setState(new CheckBalanceState(this));
+        }
+    }
+    ```
+  - This allows the Manager to update its state based on the menu selection, without needing to know the details of how the menu is managed.
+This use of the Observer pattern allows the Manager to react to changes in the menu selection. It also makes the code more flexible and easier to maintain.
+
+
 
 #### State pattern
 
-TODO: this
+- The State pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
+- This pattern can be found in the Manager class and its associated State subclasses.
+- The usage of the pattern:
+  - In this program, the State pattern is used to manage the different states of the menu in the banking system. Each state represents a different menu and has different options available.
+  - There is State interface that defines the methods for each state: `MenuState.java`.The `Manager.java` class has a setState method that allows it to change its current state.
+  ```java
+  public interface MenuState {
+    void handleRequest();
+    String getMenu();
+    String doLogic();
+  };
+  ```
+  - Each state is represented by a class that implements the State interface. For example, the `MainMenuState` class represents the main menu state. When the Manager is in this state, it displays the main menu and handles the options for this menu.
+  - When a menu option is selected that should change the state (for example, going from the main menu to the deposit menu), 
+  the Manager's state is updated with the setState method.
+
+This use of the State pattern allows the code to be more divided and easier to maintain. Each state is responsible for its own behavior, so adding a new state or changing the behavior of an existing state is as simple as adding or modifying a class.
 
 ## Run Locally
 
