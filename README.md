@@ -5,6 +5,8 @@ money as well as convert money from one currency to another. The application is 
 patterns to provide the functionality. The application was created as a school project for the course Software Design at
 HZ University of Applied Sciences.
 
+Link to GitHub Repository: https://github.com/Patrik835/SimpleBankingSystem.git
+
 ## Authors
 
 - [Lukáš Kollár](https://www.github.com/Lukas117)
