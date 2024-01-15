@@ -4,8 +4,8 @@ import ManagerObserver.Manager;
 import BankAccounts.BankAccount;
 
 public class AccountInformationState implements MenuState {
-    private Manager manager;
-    private BankAccount account;
+    private final Manager manager;
+    private final BankAccount account;
 
     public AccountInformationState(Manager manager) {
         this.manager = manager;
@@ -16,13 +16,14 @@ public class AccountInformationState implements MenuState {
     public void handleRequest() {
         manager.setWelcomeMessage("\nYou have selected to see your account information. See below:");
     }
+
     @Override
     public String doLogic() {
         double interestRate = 0.0;
         if (account.getAccountType().equals("savings")) {
             interestRate = account.getInterestRate();
         }
-        return ("Owner of the account: " + account.getOwnerName() + "\n" + "Account type: " + account.getAccountType()+ "\n" + "Interest rate: " + interestRate);
+        return ("Owner of the account: " + account.getOwnerName() + "\n" + "Account type: " + account.getAccountType() + "\n" + "Interest rate: " + interestRate);
     }
 
     @Override

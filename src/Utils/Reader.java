@@ -6,14 +6,11 @@ import java.io.InputStreamReader;
 
 public class Reader {
     public String readLine() {
-        try{
-            String line = (new BufferedReader(
+        try {
+            return ((new BufferedReader(
                     new InputStreamReader(System.in))
-            ).readLine();
-
-            return (line);
-        }
-        catch(IOException ex) {
+            ).readLine());
+        } catch (IOException ex) {
             return "Gibberish input detected";
         }
     }

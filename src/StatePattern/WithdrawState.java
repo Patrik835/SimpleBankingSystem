@@ -4,11 +4,10 @@ import ManagerObserver.Manager;
 import Utils.*;
 import SingletonPattern.BankingSystemSingleton;
 
-
 public class WithdrawState implements MenuState{
-    private Manager manager;
-    private Writer writer = new Writer();
-    private Reader reader = new Reader();
+    private final Manager manager;
+    private final Writer writer = new Writer();
+    private final Reader reader = new Reader();
 
     public WithdrawState(Manager manager) {
         this.manager = manager;
@@ -21,7 +20,7 @@ public class WithdrawState implements MenuState{
     @Override
     public String doLogic() {
         BankingSystemSingleton bankingSystem = BankingSystemSingleton.getInstance();
-        double amount = 0;
+        double amount;
         while (true) {
             writer.write("How much do you want to withdraw?");
             String input = reader.readLine();

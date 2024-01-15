@@ -47,7 +47,7 @@ public class BankingSystemSingleton {
     }
 
     public double checkBalance() {
-        if (bankAccount != null ) {
+        if (bankAccount != null) {
             return bankAccount.getBalance();
         } else {
             return -1;
@@ -64,7 +64,7 @@ public class BankingSystemSingleton {
     }
 
     public boolean withdraw(double amount) {
-        if (bankAccount != null && bankAccount.getBalance() >= amount && amount > 0) {
+        if (bankAccount != null && bankAccount.getBalance() >= amount + 2 && amount > 0) {
             BankAccountDecorator fee = new FeeDecorator(bankAccount, 2);
             fee.withdraw(amount);
             return true;
