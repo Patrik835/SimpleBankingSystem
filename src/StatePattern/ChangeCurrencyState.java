@@ -40,9 +40,18 @@ public class ChangeCurrencyState implements MenuState{
                 writer.write("Invalid input. Please enter a valid number.");
             }
         }
+        if (amount < 0) {
+            return "Exchange was unsuccessful. Please enter positive amount only.";
+        }
+        else if (amount > bankingSystem.checkBalance()) {
+            manager.setState(new MainMenuState(manager, manager.name, manager.account));
+            return "Exchange was unsuccessful. You don't have enough money in your account.";
+        }
+        else {
         double dollars = bankingSystem.changeCurrency(amount);
+        manager.setState(new MainMenuState(manager, manager.name, manager.account));
         return "Exchange of " + amount + " euros was successful.\nYou have exchanged: " + round(dollars,2)+ "$";
-
+        }
     }
     @Override
     public String getMenu() {

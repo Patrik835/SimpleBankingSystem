@@ -24,7 +24,7 @@ public class MainMenuState implements MenuState {
     }
     @Override
     public String getMenu() {
-        return "1. Account Information\n2. Deposit\n3. Withdraw\n4. Change\n5. Check balance\n6. Exit";
+        return "1. Account Information\n2. Deposit\n3. Withdraw\n4. Exchange currency\n5. Check balance\n6. Exit";
     }
     
 }

@@ -29,7 +29,6 @@ public class BankingSystemSingleton {
         return instance;
     }
 
-    // TODO: either use return value to send to other methods as parameter or return void
     public BankAccount createAccount(String accountType, String ownerName) {
         if (accountType.equalsIgnoreCase("savings")) {
             bankAccountFactory = new SavingsBankAccountFactory(0.2);
@@ -48,42 +47,39 @@ public class BankingSystemSingleton {
     }
 
     public double checkBalance() {
-        if (bankAccount != null) {
+        if (bankAccount != null ) {
             return bankAccount.getBalance();
         } else {
-            System.out.println("Account not found");
             return -1;
         }
     }
 
     public boolean deposit(double amount) {
-        if (bankAccount != null) {
+        if (bankAccount != null && amount > 0) {
             bankAccount.deposit(amount);
             return true;
         } else {
-            System.out.println("Account not found");
             return false;
         }
     }
 
     public boolean withdraw(double amount) {
-        if (bankAccount != null) {
+        if (bankAccount != null && bankAccount.getBalance() >= amount && amount > 0) {
             BankAccountDecorator fee = new FeeDecorator(bankAccount, 2);
             fee.withdraw(amount);
             return true;
         } else {
-            System.out.println("Account not found");
+            System.out.println("Your balance is too low to withdraw that amount.");
             return false;
         }
     }
 
     public double changeCurrency(double amount) {
-        if (bankAccount != null) {
+        if (bankAccount != null && amount > 0 && amount < bankAccount.getBalance()) {
             CurrencyConverter currencyConverter = new CurrencyConverterAdapter(new ExchangeRateService());
             return currencyConverter.convert(amount);
         } else {
-            System.out.println("Account not found");
-            return -1;
+            return 0.0;
         }
     }
 }
