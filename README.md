@@ -1,6 +1,6 @@
 # Simple banking system
 
-TODO: A brief description of what this project does and who it's for
+Simple banking system is a console based application that allows users to create bank accounts, deposit and withdraw money as well as convert money from one currency to another. The application is implemented in Java and uses design patterns to provide the functionality. The application was created as a school project for the course Software Design at HZ University of Applied Sciences.
 
 ## Authors
 
