@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import ManagerObserver.Manager;
-import Singleton.BankingSystemSingleton;
+import SingletonPattern.BankingSystemSingleton;
 import Utils.*;
 
 public class ChangeCurrencyState implements MenuState{
@@ -56,6 +56,5 @@ public class ChangeCurrencyState implements MenuState{
     @Override
     public String getMenu() {
         return "\n0. Go back to main menu";
-    }
-    
+    } 
 }

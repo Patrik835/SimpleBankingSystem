@@ -75,7 +75,7 @@ public class BankingSystemSingleton {
     }
 
     public double changeCurrency(double amount) {
-        if (bankAccount != null && amount > 0 && amount < bankAccount.getBalance()) {
+        if (bankAccount != null && amount > 0 && amount <= bankAccount.getBalance()) {
             CurrencyConverter currencyConverter = new CurrencyConverterAdapter(new ExchangeRateService());
             return currencyConverter.convert(amount);
         } else {
